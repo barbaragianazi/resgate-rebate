@@ -36,9 +36,18 @@ export function renderHeader(container) {
       -->
 
       <div class="header-actions">
-        <button class="header-balance" id="header-balance" type="button">
-          <span class="material-icons-outlined" style="font-size: 16px; color: var(--color-success);">monetization_on</span>
-          <span>Saldo: <strong>${formatBalance(state.user.balance)}</strong></span>
+        <button class="header-balance" id="header-balance" type="button" title="Ver detalhes do saldo">
+          <div class="header-balance-pulse">
+            <span class="header-balance-pulse-ping"></span>
+            <span class="header-balance-pulse-dot"></span>
+          </div>
+
+          <div class="header-balance-text-container">
+            <span class="header-balance-text-default">Ver saldo</span>
+            <span class="header-balance-text-hover">${formatBalance(state.user.balance)}</span>
+          </div>
+
+          <span class="material-icons-outlined header-balance-arrow">arrow_forward</span>
         </button>
 
         <a href="#/cart" class="header-cart-btn" id="header-cart-btn">
@@ -62,8 +71,8 @@ export function renderHeader(container) {
 
   // Subscribe to updates
   const unsub = subscribe(() => {
-    const bal = header.querySelector('#header-balance span:last-child');
-    if (bal) bal.innerHTML = `Saldo: <strong>${formatBalance(getState().user.balance)}</strong>`;
+    const balHover = header.querySelector('.header-balance-text-hover');
+    if (balHover) balHover.innerHTML = formatBalance(getState().user.balance);
 
     const badge = header.querySelector('.header-cart-badge');
     const count = getCartCount();

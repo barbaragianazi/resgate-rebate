@@ -58,20 +58,32 @@ function handleRoute() {
     appRoot.innerHTML = `
       <div class="app-layout">
         <div class="app-sidebar" id="app-sidebar"></div>
-        <div class="app-main" id="app-main"></div>
+        <div class="app-main">
+          <div class="app-topbar" id="app-topbar"></div>
+          <div class="app-content" id="app-content"></div>
+        </div>
       </div>
     `;
     layout = appRoot.querySelector('.app-layout');
   }
 
-  const mainContent = layout.querySelector('#app-main');
+  const mainContent = layout.querySelector('#app-content');
 
-  // Render sidebar
+  // Render legacy sidebar
   const sidebarContainer = layout.querySelector('#app-sidebar');
-  import('./components/Sidebar.js').then(({ renderSidebar }) => {
-    sidebarContainer.innerHTML = '';
-    renderSidebar(sidebarContainer);
-  });
+  if (sidebarContainer && sidebarContainer.children.length === 0) {
+    import('./components/Sidebar.js').then(({ renderSidebar }) => {
+      renderSidebar(sidebarContainer);
+    });
+  }
+
+  // Render legacy topbar
+  const topbarContainer = layout.querySelector('#app-topbar');
+  if (topbarContainer && topbarContainer.children.length === 0) {
+    import('./components/LegacyTopBar.js').then(({ renderLegacyTopBar }) => {
+      renderLegacyTopBar(topbarContainer);
+    });
+  }
 
   if (result) {
     currentCleanup = result.handler(mainContent, result.params);

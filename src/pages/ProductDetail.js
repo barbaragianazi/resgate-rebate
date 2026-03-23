@@ -1,4 +1,4 @@
-import { renderHeader } from '../components/Header.js';
+import { renderHeader } from '../components/StoreHeader.js';
 import { showToast } from '../components/Toast.js';
 import { products } from '../data/products.js';
 import { getState, addToCart, formatBalance } from '../store.js';

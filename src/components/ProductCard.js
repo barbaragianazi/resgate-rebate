@@ -33,6 +33,7 @@ export function renderProductCard(product) {
 
   return `
     <div class="product-card card card-elevated" id="product-card-${product.id}">
+      <div class="glow-effect"></div>
       <a href="#/product/${product.id}" class="product-card-image">
         <img src="${product.image}" alt="${product.name}" loading="lazy" />
         <span class="product-card-type-badge ${typeClasses[product.type]}">${typeLabels[product.type]}</span>

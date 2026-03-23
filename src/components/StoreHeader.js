@@ -1,5 +1,6 @@
 import { getState, getCartCount, formatBalance, subscribe } from '../store.js';
 import { openBalanceOverlay } from './BalanceOverlay.js';
+import { openPreferencesModal } from './PreferencesModal.js';
 
 export function renderHeader(container) {
   const state = getState();
@@ -19,21 +20,8 @@ export function renderHeader(container) {
   header.innerHTML = `
     <div class="header-inner">
       <div class="header-left">
-        <button class="header-menu-btn" id="header-menu-toggle">
-          <span class="material-icons-outlined">menu</span>
-        </button>
         <span class="header-breadcrumb">${breadcrumb}</span>
       </div>
-
-     <!-- <a href="#/" class="header-logo" id="header-logo">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect width="28" height="28" rx="8" fill="#1E1D1D"/>
-          <path d="M8 14L12 10L16 14L20 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M8 18L12 14L16 18L20 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-        </svg>
-        <span class="header-logo-text">Resgate</span>
-      </a>
-      -->
 
       <div class="header-actions">
         <button class="header-balance" id="header-balance" type="button" title="Ver detalhes do saldo">
@@ -54,10 +42,6 @@ export function renderHeader(container) {
           <span class="material-icons-outlined">shopping_bag</span>
           ${cartCount > 0 ? `<span class="header-cart-badge">${cartCount}</span>` : ''}
         </a>
-
-        <div class="header-avatar" id="header-avatar">
-          <div class="avatar-circle">${state.user.name.charAt(0)}</div>
-        </div>
       </div>
     </div>
   `;

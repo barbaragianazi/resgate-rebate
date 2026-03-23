@@ -11,6 +11,11 @@ import { renderCart } from './pages/Cart.js';
 import { renderCheckout } from './pages/Checkout.js';
 import { renderProductAdmin } from './pages/ProductAdmin.js';
 import { initProductCardListeners } from './components/ProductCard.js';
+import { initTheme } from './components/PreferencesModal.js';
+import { initGlowEffect } from './utils/glowEffect.js';
+
+// Initialize Theme
+initTheme();
 
 // Register routes
 registerRoute('/', renderHome);
@@ -23,3 +28,4 @@ registerRoute('/admin/products', renderProductAdmin);
 // Initialize
 initRouter();
 initProductCardListeners();
+initGlowEffect();

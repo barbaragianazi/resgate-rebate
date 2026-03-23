@@ -208,7 +208,7 @@
   width: 16px;
   height: 16px;
   background: var(--color-error);
-  color: #FFF;
+  color: var(--color-accent);
   font-size: 9px;
   font-weight: var(--font-weight-bold);
   border-radius: 50%;
@@ -288,7 +288,7 @@
 
 .carousel-arrow:hover {
   background: var(--color-accent);
-  color: #FFF;
+  color: var(--color-accent);
   border-color: var(--color-accent);
   box-shadow: var(--shadow-lg);
 }
@@ -351,6 +351,55 @@
   display: block;
 }
 
+/* ── Glowing Border Effect (Shadcn Style) ── */
+.glow-effect {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 1;
+  transition: opacity 0.5s;
+  z-index: 10;
+
+  --spread: 40;
+  --start: 0;
+  --active: 0;
+  --glowingeffect-border-width: 2px;
+  --repeating-conic-gradient-times: 5;
+  --gradient: radial-gradient(circle, #dd7bbb 10%, #dd7bbb00 20%),
+    radial-gradient(circle at 40% 40%, #d79f1e 5%, #d79f1e00 15%),
+    radial-gradient(circle at 60% 60%, #5a922c 10%, #5a922c00 20%),
+    radial-gradient(circle at 40% 60%, #4c7894 10%, #4c789400 20%),
+    repeating-conic-gradient(from 236.84deg at 50% 50%,
+      #dd7bbb 0%,
+      #d79f1e calc(25% / var(--repeating-conic-gradient-times)),
+      #5a922c calc(50% / var(--repeating-conic-gradient-times)),
+      #4c7894 calc(75% / var(--repeating-conic-gradient-times)),
+      #dd7bbb calc(100% / var(--repeating-conic-gradient-times)));
+}
+
+.glow-effect::after {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--glowingeffect-border-width));
+  border-radius: inherit;
+  border: var(--glowingeffect-border-width) solid transparent;
+  background: var(--gradient);
+  background-attachment: fixed;
+  opacity: var(--active);
+  transition: opacity 0.3s;
+
+  /* Standard masking */
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  mask-image: linear-gradient(#0000, #0000), conic-gradient(from calc((var(--start) - var(--spread)) * 1deg), #00000000 0deg, #fff, #00000000 calc(var(--spread) * 2deg));
+
+  /* Webkit masking for Chrome/Safari */
+  -webkit-mask-clip: padding-box, border-box;
+  -webkit-mask-composite: source-in;
+  -webkit-mask-image: linear-gradient(#0000, #0000), conic-gradient(from calc((var(--start) - var(--spread)) * 1deg), #00000000 0deg, #fff, #00000000 calc(var(--spread) * 2deg));
+}
+
 .product-card-image img {
   width: 100%;
   height: 100%;
@@ -370,8 +419,7 @@
   padding: var(--space-1) var(--space-4);
   border-radius: var(--radius-pill);
   font-size: var(--font-size-xs);
-
-  color: #FFF;
+  color: var(--color-bg);
   z-index: 2;
 }
 
@@ -476,8 +524,8 @@
 }
 
 .product-card-discount-badge {
-  background: var(--color-accent);
-  color: #FFF;
+  background: var(--color-bg);
+  color: var(--color-accent);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-bold);
   padding: 2px 8px;
@@ -505,10 +553,10 @@
   gap: var(--space-1);
   padding: var(--space-1) var(--space-2);
   background: var(--color-accent);
-  color: #FFF;
+  color: var(--color-bg);
   border-radius: var(--radius-pill);
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: all var(--transition-fast);
   border: none;

@@ -1,4 +1,4 @@
-import { renderHeader } from '../components/Header.js';
+import { renderHeader } from '../components/StoreHeader.js';
 import { showToast } from '../components/Toast.js';
 import { getState, getCartTotal, getBalanceAfter, formatBalance, clearCart, deductBalance } from '../store.js';
 import { navigate } from '../router.js';

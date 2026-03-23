@@ -1,4 +1,4 @@
-import { renderHeader } from '../components/Header.js';
+import { renderHeader } from '../components/StoreHeader.js';
 import { renderProductCard } from '../components/ProductCard.js';
 import { products } from '../data/products.js';
 import { categories } from '../data/categories.js';

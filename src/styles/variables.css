@@ -73,3 +73,32 @@
   --header-height: 56px;
   --sidebar-width: 64px;
 }
+
+/* ══════════════════════════════════
+   Dark Theme
+   ══════════════════════════════════ */
+[data-theme="dark"] {
+  --color-bg: #09090b;
+  --color-card: #18181b;
+  --color-accent: #ffffff;
+  --color-accent-hover: #e4e4e7;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
+  --color-border: #27272a;
+  --color-border-light: #3f3f46;
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.15);
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.15);
+  --color-error: #ef4444;
+  --color-error-bg: rgba(239, 68, 68, 0.15);
+  --color-balance-gradient-start: #042f2e;
+  --color-balance-gradient-end: #064e3b;
+  --color-overlay: rgba(0, 0, 0, 0.8);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.8);
+  --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
